@@ -1,0 +1,12 @@
+{
+  "name": "video-competitor-intelligence-workspace",
+  "version": "1.0.0",
+  "description": "Video Competitor Intelligence and Report Generator Workspace",
+  "scripts": {
+    "install-all": "npm install --prefix client --legacy-peer-deps && npm install --prefix server",
+    "dev-server": "npm run dev --prefix server",
+    "dev-client": "npm run dev --prefix client",
+    "dev": "npx concurrently \"npm run dev-server\" \"npm run dev-client\"",
+    "build": "npm run build --prefix client"
+  }
+}
