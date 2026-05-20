@@ -16,7 +16,7 @@ export const VideoGrid: React.FC<VideoGridProps> = ({ analysis }) => {
     }
     
     // For demo IDs, create a colorful gradient thumbnail with excellent text contrast
-    const colors = {
+    const colors: Record<string, { start: string; end: string }> = {
       'HubSpot': { start: 'FF6B35', end: 'F7931E' },
       'Salesforce': { start: '0052CC', end: '0A66C2' },
       'Monday.com': { start: '5B4AFF', end: '7662C7' },
@@ -70,13 +70,13 @@ export const VideoGrid: React.FC<VideoGridProps> = ({ analysis }) => {
 
           {/* Videos Grid - Only 2 Videos */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {company.videos.slice(0, 2).map((video, vidIdx) => {
-              const uniqueKey = `${company.companyName}-${vidIdx}-${video.videoId || video.id}`;
+              {company.videos.slice(0, 2).map((video, vidIdx) => {
+              const uniqueKey = `${company.companyName}-${vidIdx}-${video.id}`;
               
               return (
                 <a
                   key={uniqueKey}
-                  href={getYoutubeUrl(video.videoId || video.id)}
+                  href={getYoutubeUrl(video.id)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group bg-white rounded-xl overflow-hidden border border-slate-200 hover:border-slate-300 transition-all duration-300 hover:shadow-md cursor-pointer flex flex-col h-full"
@@ -84,7 +84,7 @@ export const VideoGrid: React.FC<VideoGridProps> = ({ analysis }) => {
                   {/* Video Thumbnail */}
                   <div className="relative overflow-hidden bg-slate-100 aspect-video">
                     <img
-                      src={generateVideoThumbnail(video.videoId || video.id, video.title, company.companyName)}
+                      src={generateVideoThumbnail(video.id, video.title, company.companyName)}
                       alt={video.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />

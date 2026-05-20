@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   /* config options here */
   // Ensure Turbopack uses the client folder as the workspace root
   experimental: {
@@ -8,6 +8,6 @@ const nextConfig: NextConfig = {
       root: "."
     }
   }
-};
+} as any;
 
 export default nextConfig;

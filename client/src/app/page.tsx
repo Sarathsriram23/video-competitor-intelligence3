@@ -545,10 +545,9 @@ export default function Home() {
                         tickFormatter={(v) => `${(v / 1000).toFixed(0)}K`} 
                       />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: '#ffffff', border: '2px solid #e5e7eb', borderRadius: '8px', padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} 
+                        contentStyle={{ backgroundColor: '#ffffff', border: '2px solid #e5e7eb', borderRadius: '8px', padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', color: '#374151', fontSize: '12px', fontWeight: '500' }} 
                         labelStyle={{ fontWeight: 'bold', color: '#1f2937', marginBottom: '4px' }}
                         formatter={(value: any) => [parseInt(value).toLocaleString(), 'Subscribers']}
-                        contentItemStyle={{ color: '#374151', fontSize: '12px', fontWeight: '500' }}
                       />
                       <Bar dataKey="channelInfo.statistics.subscriberCount" radius={[6, 6, 0, 0]}>
                         {report.analysis.map((entry, index) => (
@@ -581,7 +580,7 @@ export default function Home() {
                       <XAxis dataKey="companyName" stroke="#9ca3af" fontSize={11} tickLine={false} />
                       <YAxis stroke="#9ca3af" fontSize={11} tickLine={false} domain={[0, 100]} />
                       <Tooltip 
-                        contentStyle={{ backgroundColor: '#ffffff', border: '2px solid #e5e7eb', borderRadius: '8px', padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                        contentStyle={{ backgroundColor: '#ffffff', border: '2px solid #e5e7eb', borderRadius: '8px', padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', color: '#374151', fontSize: '12px', fontWeight: '500' }}
                         labelStyle={{ fontWeight: 'bold', color: '#1f2937', marginBottom: '4px' }}
                         formatter={(value: any, name: any, props: any) => {
                           if (name === 'metrics.uploadConsistencyScore') {
@@ -589,7 +588,6 @@ export default function Home() {
                           }
                           return [`${value} videos/mo`, 'Upload Volume'];
                         }}
-                        contentItemStyle={{ color: '#374151', fontSize: '12px', fontWeight: '500' }}
                       />
                       <Bar dataKey="metrics.uploadConsistencyScore" name="Consistency Rating" fill="#a855f7" radius={[6, 6, 0, 0]} barSize={25} />
                       <Bar dataKey="metrics.videosPerMonth" name="Videos Per Month" fill="#3b82f6" radius={[6, 6, 0, 0]} barSize={25} />
@@ -622,10 +620,9 @@ export default function Home() {
                         <XAxis dataKey="companyName" stroke="#9ca3af" fontSize={9} tickLine={false} />
                         <YAxis stroke="#9ca3af" fontSize={9} tickLine={false} tickFormatter={(v) => `${v}%`} />
                         <Tooltip 
-                          contentStyle={{ backgroundColor: '#ffffff', border: '2px solid #e5e7eb', borderRadius: '8px', padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                          contentStyle={{ backgroundColor: '#ffffff', border: '2px solid #e5e7eb', borderRadius: '8px', padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', color: '#374151', fontSize: '12px', fontWeight: '500' }}
                           labelStyle={{ fontWeight: 'bold', color: '#1f2937', marginBottom: '4px' }}
                           formatter={(v: any) => [`${parseFloat(v).toFixed(2)}%`, 'Engagement']}
-                          contentItemStyle={{ color: '#374151', fontSize: '12px', fontWeight: '500' }}
                         />
                         <Bar dataKey="metrics.engagementRate" fill="#6366f1" radius={[4, 4, 0, 0]}>
                           {report.analysis.map((entry, index) => (
