@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary: #4f46e5;
+  --primary-light: #3b82f6;
+  --accent: #7c3aed;
+  --accent-light: #8b5cf6;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --border-color: rgba(148, 163, 184, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-card-bg: var(--card-bg);
+  --color-border-color: var(--border-color);
+  --font-sans: system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+
+body {
+  background: radial-gradient(circle at top left, #f5f3ff 0%, #f1f5f9 50%, #e2e8f0 100%);
+  color: var(--foreground);
+  font-family: system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Beautiful light glassmorphism classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  box-shadow: 0 10px 30px -10px rgba(79, 70, 229, 0.08) !important;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  box-shadow: 0 4px 20px -5px rgba(79, 70, 229, 0.04) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.4) !important;
+  box-shadow: 0 12px 30px -5px rgba(79, 70, 229, 0.1), 0 0 15px rgba(99, 102, 241, 0.05) !important;
+}
+
+/* Glowing text */
+.text-glow {
+  text-shadow: 0 0 10px rgba(79, 70, 229, 0.2);
+}
+
+.border-glow {
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.15);
+}
+
+/* Custom Scrollbar for Light Theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.45);
+}
+
+/* Scanning scanline animation for Light Theme */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scanline {
+  animation: scanline 4s linear infinite;
+}
+
+/* Shimmer placeholder animation */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.4) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+  content: '';
+}
+
+/* ========================================================
+   LIGHT THEME TAILWIND CLASS OVERRIDES (BULLETPROOF UX)
+   ======================================================== */
+
+/* Convert dark text classes to Slate-900 / Slate-800 for high contrast readability */
+.text-white {
+  color: #0f172a !important;
+}
+.text-slate-100 {
+  color: #1e293b !important;
+}
+.text-slate-200 {
+  color: #334155 !important;
+}
+.text-slate-300 {
+  color: #475569 !important;
+}
+.text-slate-400 {
+  color: #64748b !important;
+}
+.text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Maintain proper colors inside buttons or specifically designated blocks */
+.bg-indigo-600 .text-white,
+button.bg-indigo-600,
+button.bg-indigo-600 span,
+button.bg-indigo-600 svg,
+.bg-emerald-600,
+.bg-emerald-600 .text-white,
+.bg-emerald-500,
+.bg-emerald-500 .text-white,
+.bg-red-500,
+.bg-red-500 .text-white,
+.text-xs.bg-slate-800\/80,
+.bg-indigo-600 .text-white *,
+button * {
+  color: #ffffff !important;
+}
+
+/* Force light backgrounds for containers and inputs */
+[class~="bg-[#0f172a]"] {
+  background-color: #ffffff !important;
+}
+.bg-slate-900 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+}
+[class~="bg-[#020617]"] {
+  background-color: #f8fafc !important;
+}
+[class~="bg-[#020617]/50"] {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18) !important;
+}
+.bg-slate-950 {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+}
+[class~="bg-[#0f172a]/60"] {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+}
+[class~="bg-[#0f172a]/40"] {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+.bg-slate-800\/50 {
+  background-color: rgba(241, 245, 249, 0.8) !important;
+}
+.bg-slate-800\/30 {
+  background-color: rgba(241, 245, 249, 0.5) !important;
+}
+
+/* Set up nice input styles */
+input[type="text"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(148, 163, 184, 0.3) !important;
+}
+input[type="text"]:focus {
+  border-color: #4f46e5 !important;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1) !important;
+}
+
+/* Custom border colors */
+.border-white\/5, 
+.border-white\/10,
+.border-slate-800,
+.border-slate-700 {
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+/* Adjust radar charts & legend text colors in recharts */
+.recharts-legend-item-text {
+  color: #0f172a !important;
+}
+.recharts-polar-grid-concentric-path {
+  stroke: rgba(148, 163, 184, 0.2) !important;
+}
+.recharts-polar-angle-axis-line {
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+.recharts-cartesian-grid line {
+  stroke: rgba(148, 163, 184, 0.15) !important;
+}
